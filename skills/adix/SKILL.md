@@ -25,7 +25,31 @@ One line in your system prompt. Everything else is automatic.
 
 ## Setup
 
-### Step 1: Bootstrap Protocol (Manual — One Line)
+This skill is installed by placing its files in your agent's skills directory. The skill loader discovers it on the next session start.
+
+### Step 1: Install the Skill Files
+
+Create the skill directory and write the SKILL.md and supporting files:
+
+```bash
+# Create the skill directory
+mkdir -p ~/.hermes/skills/adix/{references,templates}
+
+# Copy SKILL.md to the skill root
+# (this file is already at skills/adix/SKILL.md in the repo)
+
+# Copy reference files
+cp references/adix-spec-v1.2.0.md ~/.hermes/skills/adix/references/
+
+# Copy templates
+cp templates/HANDSHAKE.md ~/.hermes/skills/adix/templates/
+cp templates/CONTEXT.md ~/.hermes/skills/adix/templates/
+cp templates/NOTES.md ~/.hermes/skills/adix/templates/
+```
+
+For other frameworks, place the `skills/adix/` directory at the path your agent loads skills from.
+
+### Step 2: Bootstrap Protocol (Manual — One Line)
 
 Add this block to your agent's core system profile (`AGENT.md`, `SOUL.md`, `CLAUDE.md`, or equivalent):
 
@@ -35,23 +59,22 @@ Add this block to your agent's core system profile (`AGENT.md`, `SOUL.md`, `CLAU
 
 This is the only manual step. It creates the execution gate — no tool use until the directory context is loaded.
 
-### Step 2: Scaffold Your Project Root
+### Step 3: Scaffold Your Project Root
 
 Create three files at your project root. Use the templates from this skill's `templates/` directory, or write your own:
+
+```bash
+cp ~/.hermes/skills/adix/templates/HANDSHAKE.md /path/to/your/project/
+cp ~/.hermes/skills/adix/templates/CONTEXT.md /path/to/your/project/
+cp ~/.hermes/skills/adix/templates/NOTES.md /path/to/your/project/
+mkdir -p /path/to/your/project/backups
+```
 
 - `HANDSHAKE.md` — how we work together (relational contract)
 - `CONTEXT.md` — what we're working on (structural rails)
 - `NOTES.md` — what we've learned (memory engine)
 
 The agent will automatically discover and bind to these files on every session start.
-
-### Step 3: Phase-Backup Directory
-
-Create a `backups/` directory at your project root for snapshot storage:
-
-```bash
-mkdir -p backups
-```
 
 ## The ADIX Execution Loop
 

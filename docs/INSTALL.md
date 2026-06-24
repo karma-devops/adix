@@ -5,12 +5,49 @@
 - An AI agent that supports a system prompt or core profile (AGENT.md, SOUL.md, CLAUDE.md, etc.)
 - A project directory you want to bring under ADIX discipline
 
-## Step 1: Bootstrap Protocol
+## Method 1: Install as a Skill (Recommended)
+
+Place the skill files where your agent's skill loader can discover them:
+
+```bash
+# Clone the repo
+git clone https://github.com/karma-devops/adix.git
+cd adix
+
+# Create the skill directory
+mkdir -p ~/.hermes/skills/adix/{references,templates}
+
+# Copy SKILL.md
+cp skills/adix/SKILL.md ~/.hermes/skills/adix/
+
+# Copy reference files
+cp references/adix-spec-v1.2.0.md ~/.hermes/skills/adix/references/
+
+# Copy templates
+cp templates/HANDSHAKE.md ~/.hermes/skills/adix/templates/
+cp templates/CONTEXT.md ~/.hermes/skills/adix/templates/
+cp templates/NOTES.md ~/.hermes/skills/adix/templates/
+```
+
+For other frameworks, place the `skills/adix/` directory at the path your agent loads skills from.
+
+## Method 2: Manual Setup
+
+Copy the templates directly to your project:
+
+```bash
+cp templates/HANDSHAKE.md /path/to/your/project/
+cp templates/CONTEXT.md /path/to/your/project/
+cp templates/NOTES.md /path/to/your/project/
+mkdir -p /path/to/your/project/backups
+```
+
+## Step 2: Bootstrap Protocol
 
 Add this block to your agent's core system profile:
 
 ```markdown
-**BOOTSTRAP PROTOCOL:** Before invoking any tool or executing any action, you must locate and read the root `CONTEXT.md` of the active project directory structure. The filesystem is the state machine. Every directory node operates as an independent processing boundary governed by a local `CONTEXT.md` (the structural rails) and `NOTES.md` (the memory engine) pair. You are strictly bound by the active directory's localized contract, its documentation update rules, its phase-backup validation loops, and the mandatory **SINGLE-LINE EDIT** constraint: modify exactly one line per tool execution block. Parse the root-level `CONTEXT.md` first to initialize your operational boundaries.
+**BOOTSTRAP PROTOCOL:** Before invoking any tool or executing any action, you must locate and read the root `CONTEXT.md` of the active project directory structure. The filesystem is the state machine. Every directory node operates as an independent processing boundary governed by a local `CONTEXT.md` (the structural rails) and `NOTES.md` (the memory engine) pair. You are strictly bound by the active directory's localized contract, its documentation update rules, its phase-backup validation loops, and the mandatory **SINGLE-LINE EDIT** constraint: modify exactly one line per tool execution block. Read the root-level `CONTEXT.md` first to initialize your operational boundaries.
 ```
 
 **Where to put it:**
@@ -21,20 +58,6 @@ Add this block to your agent's core system profile:
 | Open Codex | `AGENTS.md` or equivalent | Check your platform docs |
 | Custom | Your agent's system prompt | Append as the final instruction block |
 
-## Step 2: Scaffold Your Project
-
-Copy the templates from this repo to your project root:
-
-```bash
-# From the ADIX repo
-cp templates/HANDSHAKE.md /path/to/your/project/HANDSHAKE.md
-cp templates/CONTEXT.md /path/to/your/project/CONTEXT.md
-cp templates/NOTES.md /path/to/your/project/NOTES.md
-mkdir -p /path/to/your/project/backups
-```
-
-Then edit each file to match your project — the HANDSHAKE sets expectations, CONTEXT.md defines structure, NOTES.md tracks memory.
-
 ## Step 3: Verify
 
 Start a new session with your agent. The first tool call should trigger the Bootstrap Protocol — the agent will read `CONTEXT.md` before doing anything else. You should see:
@@ -43,11 +66,3 @@ Start a new session with your agent. The first tool call should trigger the Boot
 2. First edit is preceded by a phase-backup snapshot
 3. Every tool call modifies exactly one line
 4. Every closeout appends to `NOTES.md` [NOTED] section
-
-## Framework-Specific Notes
-
-### Claude Code
-Place the Bootstrap Protocol in your project's `CLAUDE.md`. The agent will follow the structural traversal and single-line edit discipline automatically.
-
-### Other Frameworks
-The Bootstrap Protocol is framework-agnostic. Any agent that reads its system prompt will respect the execution gate. The templates and spec are pure markdown — no platform-specific dependencies.

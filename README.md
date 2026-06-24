@@ -6,7 +6,7 @@
 
 ---
 
-*Built from [ICM](https://github.com/RinDig/Interpreted-Context-Methdology) (Jake Van Clief — Hugging Face Space Agent) and [DOX](https://github.com/agent0ai/dox) / [Space Agent](https://github.com/agent0ai/space-agent) / [Agent Zero](https://github.com/agent0ai/agent-zero) (agent0ai) — the frameworks that proved the filesystem is the state machine. This is those ideas applied, as a skill, free for your agent.*
+*Built from [ICM](https://github.com/RinDig/Interpreted-Context-Methdology) (Jake Van Clief — Hugging Face Space Agent) and [DOX](https://github.com/agent0ai/dox) / [Agent Zero](https://github.com/agent0ai/agent-zero) (agent0ai) — the frameworks that proved the filesystem is the state machine. This is those ideas applied, as a skill, free for your agent.*
 
 ---
 
@@ -40,10 +40,20 @@ The agent never operates blind. It always knows where it is, what the directory 
 
 ## Quick Start
 
+**Install as a skill** (agent discovers it automatically):
+
 ```bash
 git clone https://github.com/karma-devops/adix.git
 cd adix
+mkdir -p ~/.hermes/skills/adix/{references,templates}
+cp skills/adix/SKILL.md ~/.hermes/skills/adix/
+cp references/adix-spec-v1.2.0.md ~/.hermes/skills/adix/references/
+cp templates/*.md ~/.hermes/skills/adix/templates/
+```
 
+**Or copy templates directly to your project:**
+
+```bash
 cp templates/HANDSHAKE.md /path/to/your/project/
 cp templates/CONTEXT.md /path/to/your/project/
 cp templates/NOTES.md /path/to/your/project/
@@ -94,4 +104,4 @@ MIT — use it, modify it, ship it. No restrictions.
 
 ---
 
-*Built from [DOX](https://github.com/agent0ai/dox) / [Space Agent](https://github.com/agent0ai/space-agent) / [Agent Zero](https://github.com/agent0ai/agent-zero) (agent0ai), [ICM](https://github.com/RinDig/Interpreted-Context-Methdology) ([eduba.io](https://eduba.io) — Hugging Face Space Agent), [agentskills.io](https://agentskills.io), [AEE](https://solvingforsingularity.com), and Karpathy's guidelines. Synthesized into one coherent methodology.*
+*Built from [DOX](https://github.com/agent0ai/dox) / [Agent Zero](https://github.com/agent0ai/agent-zero) (agent0ai), [ICM](https://github.com/RinDig/Interpreted-Context-Methdology) ([eduba.io](https://eduba.io) — Hugging Face Space Agent), [agentskills.io](https://agentskills.io), [AEE](https://solvingforsingularity.com), and Karpathy's guidelines. Synthesized into one coherent methodology.*
