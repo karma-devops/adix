@@ -1,6 +1,6 @@
-# ADIX: Autonomous Directory Interpretable Context Engine
+# ADIX: Agent Directory Index
 > **Specification Version:** 1.2.0
-> **Core Architecture:** Agent Documenting Index, Self-Documentation, Phase-Backup Engine, & Skill Architecture Standard
+> **Core Architecture:** Agent Directory Index, Self-Documentation, Phase-Backup Engine, & Skill Architecture Standard
 > **Copyright:** © 2026. Released under the [MIT License](../LICENSE). Free to use, modify, and distribute.
 
 ---

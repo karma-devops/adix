@@ -1,12 +1,18 @@
 # ADIX
 
-**Autonomous Directory Interpretable Context Engine**
+**Agent Directory Index**
 
 > Your agent needs a spine.
 
 ---
 
-ADIX is an execution methodology that gives AI agents surgical precision. One line in your system prompt. Everything else is automatic.
+*Built from [ICM](https://arxiv.org/abs/2504.01427) (Jake Van Clief, McDermott) and [dox](https://github.com/agent0ai/dox) — the frameworks that proved the filesystem is the state machine. This is those ideas applied, as a skill, free for your agent.*
+
+---
+
+You heard about Interpretable Context Methodology. This is it applied.
+
+One line in your system prompt. Your agent becomes self-documenting. It navigates any directory it encounters. It edits surgically — one line per call, verified by diff, backed up before every change.
 
 The filesystem is the state machine. Every directory is a processing node governed by a `CONTEXT.md` (the rails) and `NOTES.md` (the memory) pair. The agent reads the directory structure before touching anything, edits exactly one line per tool call, snapshots state before every modification, and self-documents every closeout.
 
@@ -25,7 +31,7 @@ That's it. Append that to your agent's system profile. The rest is automatic.
 | Phase | What Happens |
 |-------|-------------|
 | **Initialization** | Bootstrap Protocol fires — agent reads root CONTEXT.md before any tool use |
-| **Pre-Flight Traversal** | Walks the directory tree, parses every CONTEXT.md + NOTES.md along the route |
+| **Pre-Flight Traversal** | Follows the directory path from root to target, reads each CONTEXT.md + NOTES.md along the route |
 | **Phase-Backup Guard** | Snapshots state before every edit — no backup, no edit |
 | **Active Execution** | Modifies exactly one line per tool call |
 | **Post-Flight Closeout** | Verifies diff, logs to NOTES.md, re-indexes parent tree |
@@ -42,10 +48,11 @@ That's it. Append that to your agent's system profile. The rest is automatic.
 
 ```bash
 # 1. Clone the repo
-git clone https://github.com/your-org/adix.git
+git clone https://github.com/karma-devops/adix.git
 cd adix
 
 # 2. Copy templates to your project
+cp templates/HANDSHAKE.md /path/to/your/project/
 cp templates/CONTEXT.md /path/to/your/project/
 cp templates/NOTES.md /path/to/your/project/
 mkdir -p /path/to/your/project/backups
@@ -67,7 +74,7 @@ adix/
 ├── references/
 │   └── adix-spec-v1.2.0.md   ← Full specification (8 sections)
 ├── templates/
-│   ├── HANDSHAKE.md          ← Relational contract — how agent and operator work together
+│   ├── HANDSHAKE.md           ← Relational contract — how agent and user work together
 │   ├── CONTEXT.md             ← Directory node structural contract
 │   └── NOTES.md               ← Directory node memory and execution loop
 └── skills/

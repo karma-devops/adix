@@ -5,7 +5,7 @@ version: 1.2.0
 license: MIT
 ---
 
-# ADIX: Autonomous Directory Interpretable Context Engine
+# ADIX: Agent Directory Index
 
 ## Overview
 
