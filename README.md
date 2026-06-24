@@ -2,7 +2,7 @@
 
 **Agent Directory Index**
 
-> Your agent needs a spine.
+> Your agent should never operate blind.
 
 ---
 
@@ -97,4 +97,4 @@ MIT — use it, modify it, ship it. No restrictions.
 
 ---
 
-*Built from [DOX](https://github.com/agent0ai/dox), [ICM](https://github.com/RinDig/Interpreted-Context-Methdology), [agentskills.io](https://agentskills.io), [AEE](https://solvingforsingularity.com), and Karpathy's guidelines. Synthesized into one coherent methodology.*
+*Built from [DOX](https://github.com/agent0ai/dox) ([Agent Zero](https://github.com/agent0ai/agent-zero) ecosystem), [ICM](https://github.com/RinDig/Interpreted-Context-Methdology) ([eduba.io](https://eduba.io) — Hugging Face Space Agent), [agentskills.io](https://agentskills.io), [AEE](https://solvingforsingularity.com), and Karpathy's guidelines. Synthesized into one coherent methodology.*
