@@ -6,7 +6,7 @@
 
 ---
 
-*Built from [ICM](https://github.com/RinDig/Interpreted-Context-Methdology) (Jake Van Clief) and [DOX](https://github.com/agent0ai/dox) (agent0ai, the Agent Zero harness) — the frameworks that proved the filesystem is the state machine. This is those ideas applied, as a skill, free for your agent.*
+*Built from [ICM](https://github.com/RinDig/Interpreted-Context-Methdology) (Jake Van Clief — Hugging Face Space Agent) and [DOX](https://github.com/agent0ai/dox) / [Space Agent](https://github.com/agent0ai/space-agent) / [Agent Zero](https://github.com/agent0ai/agent-zero) (agent0ai) — the frameworks that proved the filesystem is the state machine. This is those ideas applied, as a skill, free for your agent.*
 
 ---
 
@@ -14,27 +14,43 @@ You heard about Interpretable Context Methodology. This is it applied.
 
 One line in your system prompt. Your agent becomes self-documenting. It navigates any directory it encounters. It edits surgically — one line per call, verified by diff, backed up before every change.
 
-The filesystem is the state machine. Every directory is a processing node governed by a `CONTEXT.md` (the rails) and `NOTES.md` (the memory) pair. The agent reads the directory structure before touching anything, edits exactly one line per tool call, snapshots state before every modification, and self-documents every closeout.
-
-No more context drift. No more catastrophic overwrites. No more agents operating blind.
-
 ## One Line
+
+Add this to your agent's system profile:
 
 ```markdown
 **BOOTSTRAP PROTOCOL:** Before invoking any tool or executing any action, you must locate and read the root `CONTEXT.md` of the active project directory structure.
 ```
 
-That's it. Append that to your agent's system profile. The rest is automatic.
+That's it. The agent reads `CONTEXT.md` before every action. Everything else is automatic.
 
 ## How It Works
 
-| Phase | What Happens |
-|-------|-------------|
-| **Initialization** | Bootstrap Protocol fires — agent reads root CONTEXT.md before any tool use |
-| **Pre-Flight Traversal** | Follows the directory path from root to target, reads each CONTEXT.md + NOTES.md along the route |
-| **Phase-Backup Guard** | Snapshots state before every edit — no backup, no edit |
-| **Active Execution** | Modifies exactly one line per tool call |
-| **Post-Flight Closeout** | Verifies diff, logs to NOTES.md, re-indexes parent tree |
+Every tool call follows five phases:
+
+| # | Phase | What happens |
+|---|-------|-------------|
+| 1 | **Initialize** | Agent reads root `CONTEXT.md` — no tool use until it knows where it is |
+| 2 | **Traverse** | Follows the path from root to target, reading every `CONTEXT.md` and `NOTES.md` along the way |
+| 3 | **Backup** | Snapshots current state before any edit — no backup, no edit |
+| 4 | **Execute** | Modifies exactly one line per tool call |
+| 5 | **Closeout** | Verifies the diff, logs to `NOTES.md`, updates parent indexes |
+
+The agent never operates blind. It always knows where it is, what the directory expects, and what changed.
+
+## Quick Start
+
+```bash
+git clone https://github.com/karma-devops/adix.git
+cd adix
+
+cp templates/HANDSHAKE.md /path/to/your/project/
+cp templates/CONTEXT.md /path/to/your/project/
+cp templates/NOTES.md /path/to/your/project/
+mkdir -p /path/to/your/project/backups
+```
+
+Then add the Bootstrap Protocol line to your agent's system profile. Start a new session. The agent reads `CONTEXT.md` first.
 
 ## What You Get
 
@@ -44,42 +60,23 @@ That's it. Append that to your agent's system profile. The rest is automatic.
 - **Structural awareness.** The agent knows where it is in the tree, what the node expects, and what the parent needs to know.
 - **Framework-agnostic.** Works with Claude Code, Open Codex — any agent that reads a system prompt.
 
-## Quick Start
-
-```bash
-# 1. Clone the repo
-git clone https://github.com/karma-devops/adix.git
-cd adix
-
-# 2. Copy templates to your project
-cp templates/HANDSHAKE.md /path/to/your/project/
-cp templates/CONTEXT.md /path/to/your/project/
-cp templates/NOTES.md /path/to/your/project/
-mkdir -p /path/to/your/project/backups
-
-# 3. Add one line to your agent's system profile
-#    (see docs/INSTALL.md for platform-specific instructions)
-
-# 4. Start a new session. The agent reads CONTEXT.md first.
-```
-
 ## Repo Structure
 
 ```
 adix/
 ├── README.md                  ← You are here
-├── LICENSE                    ← MIT — free to use, modify, distribute
+├── LICENSE                    ← MIT
 ├── docs/
 │   └── INSTALL.md             ← Platform-specific install instructions
 ├── references/
-│   └── adix-spec-v1.2.0.md   ← Full specification (8 sections)
+│   └── adix-spec-v1.2.0.md   ← Full specification
 ├── templates/
-│   ├── HANDSHAKE.md           ← Relational contract — how agent and user work together
-│   ├── CONTEXT.md             ← Directory node structural contract
-│   └── NOTES.md               ← Directory node memory and execution loop
+│   ├── HANDSHAKE.md           ← Relational contract
+│   ├── CONTEXT.md             ← Directory node contract
+│   └── NOTES.md               ← Memory and execution loop
 └── skills/
     └── adix/
-        └── SKILL.md           ← Agent-facing artifact (loadable by compatible agents)
+        └── SKILL.md           ← Agent-facing artifact
 ```
 
 ## Why ADIX?
@@ -97,4 +94,4 @@ MIT — use it, modify it, ship it. No restrictions.
 
 ---
 
-*Built from [DOX](https://github.com/agent0ai/dox) ([Agent Zero](https://github.com/agent0ai/agent-zero) ecosystem), [ICM](https://github.com/RinDig/Interpreted-Context-Methdology) ([eduba.io](https://eduba.io) — Hugging Face Space Agent), [agentskills.io](https://agentskills.io), [AEE](https://solvingforsingularity.com), and Karpathy's guidelines. Synthesized into one coherent methodology.*
+*Built from [DOX](https://github.com/agent0ai/dox) / [Space Agent](https://github.com/agent0ai/space-agent) / [Agent Zero](https://github.com/agent0ai/agent-zero) (agent0ai), [ICM](https://github.com/RinDig/Interpreted-Context-Methdology) ([eduba.io](https://eduba.io) — Hugging Face Space Agent), [agentskills.io](https://agentskills.io), [AEE](https://solvingforsingularity.com), and Karpathy's guidelines. Synthesized into one coherent methodology.*
