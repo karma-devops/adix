@@ -45,11 +45,13 @@ The agent never operates blind. It always knows where it is, what the directory 
 ```bash
 git clone https://github.com/karma-devops/adix.git
 cd adix
-mkdir -p ~/.hermes/skills/adix/{references,templates}
-cp skills/adix/SKILL.md ~/.hermes/skills/adix/
-cp references/adix-spec-v1.2.0.md ~/.hermes/skills/adix/references/
-cp templates/*.md ~/.hermes/skills/adix/templates/
+mkdir -p <skills-dir>/adix/{references,templates}
+cp skills/adix/SKILL.md <skills-dir>/adix/
+cp references/adix-spec-v1.2.0.md <skills-dir>/adix/references/
+cp templates/*.md <skills-dir>/adix/templates/
 ```
+
+Replace `<skills-dir>` with your agent's skill path (e.g. `~/.hermes/skills/`, `~/.claude/skills/`, `~/.codex/skills/`).
 
 **Or copy templates directly to your project:**
 

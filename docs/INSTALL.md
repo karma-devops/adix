@@ -14,22 +14,27 @@ Place the skill files where your agent's skill loader can discover them:
 git clone https://github.com/karma-devops/adix.git
 cd adix
 
-# Create the skill directory
-mkdir -p ~/.hermes/skills/adix/{references,templates}
+# Create the skill directory (replace <skills-dir> with your agent's skill path)
+mkdir -p <skills-dir>/adix/{references,templates}
 
 # Copy SKILL.md
-cp skills/adix/SKILL.md ~/.hermes/skills/adix/
+cp skills/adix/SKILL.md <skills-dir>/adix/
 
 # Copy reference files
-cp references/adix-spec-v1.2.0.md ~/.hermes/skills/adix/references/
+cp references/adix-spec-v1.2.0.md <skills-dir>/adix/references/
 
 # Copy templates
-cp templates/HANDSHAKE.md ~/.hermes/skills/adix/templates/
-cp templates/CONTEXT.md ~/.hermes/skills/adix/templates/
-cp templates/NOTES.md ~/.hermes/skills/adix/templates/
+cp templates/HANDSHAKE.md <skills-dir>/adix/templates/
+cp templates/CONTEXT.md <skills-dir>/adix/templates/
+cp templates/NOTES.md <skills-dir>/adix/templates/
 ```
 
-For other frameworks, place the `skills/adix/` directory at the path your agent loads skills from.
+Replace `<skills-dir>` with your agent's skill path. Common locations:
+
+- **Hermes Agent:** `~/.hermes/skills/`
+- **Claude Code:** `~/.claude/skills/`
+- **Open Codex:** `~/.codex/skills/`
+- **Custom:** Check your agent's documentation
 
 ## Method 2: Manual Setup
 

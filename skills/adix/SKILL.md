@@ -29,25 +29,30 @@ This skill is installed by placing its files in your agent's skills directory. T
 
 ### Step 1: Install the Skill Files
 
-Create the skill directory and write the SKILL.md and supporting files:
+Create a directory for the skill at the path your agent loads skills from, then copy the files:
 
 ```bash
-# Create the skill directory
-mkdir -p ~/.hermes/skills/adix/{references,templates}
+# Create the skill directory structure
+mkdir -p <skills-dir>/adix/{references,templates}
 
 # Copy SKILL.md to the skill root
-# (this file is already at skills/adix/SKILL.md in the repo)
+cp skills/adix/SKILL.md <skills-dir>/adix/
 
 # Copy reference files
-cp references/adix-spec-v1.2.0.md ~/.hermes/skills/adix/references/
+cp references/adix-spec-v1.2.0.md <skills-dir>/adix/references/
 
 # Copy templates
-cp templates/HANDSHAKE.md ~/.hermes/skills/adix/templates/
-cp templates/CONTEXT.md ~/.hermes/skills/adix/templates/
-cp templates/NOTES.md ~/.hermes/skills/adix/templates/
+cp templates/HANDSHAKE.md <skills-dir>/adix/templates/
+cp templates/CONTEXT.md <skills-dir>/adix/templates/
+cp templates/NOTES.md <skills-dir>/adix/templates/
 ```
 
-For other frameworks, place the `skills/adix/` directory at the path your agent loads skills from.
+Replace `<skills-dir>` with your agent's skill path. Common locations:
+
+- **Hermes Agent:** `~/.hermes/skills/`
+- **Claude Code:** `~/.claude/skills/`
+- **Open Codex:** `~/.codex/skills/`
+- **Custom:** Check your agent's documentation
 
 ### Step 2: Bootstrap Protocol (Manual — One Line)
 
@@ -64,9 +69,9 @@ This is the only manual step. It creates the execution gate — no tool use unti
 Create three files at your project root. Use the templates from this skill's `templates/` directory, or write your own:
 
 ```bash
-cp ~/.hermes/skills/adix/templates/HANDSHAKE.md /path/to/your/project/
-cp ~/.hermes/skills/adix/templates/CONTEXT.md /path/to/your/project/
-cp ~/.hermes/skills/adix/templates/NOTES.md /path/to/your/project/
+cp <skills-dir>/adix/templates/HANDSHAKE.md /path/to/your/project/
+cp <skills-dir>/adix/templates/CONTEXT.md /path/to/your/project/
+cp <skills-dir>/adix/templates/NOTES.md /path/to/your/project/
 mkdir -p /path/to/your/project/backups
 ```
 
