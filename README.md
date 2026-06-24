@@ -6,7 +6,7 @@
 
 ---
 
-*Built from [ICM](https://github.com/RinDig/Interpreted-Context-Methdology) (Jake Van Clief — Hugging Face Space Agent) and [DOX](https://github.com/agent0ai/dox) / [Agent Zero](https://github.com/agent0ai/agent-zero) (agent0ai) — the frameworks that proved the filesystem is the state machine. This is those ideas applied, as a skill, free for your agent.*
+*Built from [ICM](https://github.com/RinDig/Interpreted-Context-Methdology) (Jake Van Clief) and [DOX](https://github.com/agent0ai/dox) / [Agent Zero](https://github.com/agent0ai/agent-zero) (agent0ai) — the frameworks that proved the filesystem is the state machine. This is those ideas applied, as a skill, free for your agent.*
 
 ---
 
@@ -104,4 +104,4 @@ MIT — use it, modify it, ship it. No restrictions.
 
 ---
 
-*Built from [DOX](https://github.com/agent0ai/dox) / [Agent Zero](https://github.com/agent0ai/agent-zero) (agent0ai), [ICM](https://github.com/RinDig/Interpreted-Context-Methdology) ([eduba.io](https://eduba.io) — Hugging Face Space Agent), [agentskills.io](https://agentskills.io), [AEE](https://solvingforsingularity.com), and Karpathy's guidelines. Synthesized into one coherent methodology.*
+*Built from [DOX](https://github.com/agent0ai/dox) / [Agent Zero](https://github.com/agent0ai/agent-zero) (agent0ai), [ICM](https://github.com/RinDig/Interpreted-Context-Methdology) ([eduba.io](https://eduba.io)), [agentskills.io](https://agentskills.io), [AEE](https://solvingforsingularity.com), and Karpathy's guidelines. Synthesized into one coherent methodology.*
